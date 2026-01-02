@@ -1,12 +1,9 @@
 const { Router } = require("express");
-const {
-  guessPuzzleCharacterById,
-  getPuzzleById,
-} = require("../controllers/puzzle");
+const { puzzleReadAll, puzzleReadById } = require("../controllers/puzzle");
 const puzzle = Router();
 
-puzzle.get("/:puzzleId", getPuzzleById);
+puzzle.get("/", puzzleReadAll);
 
-puzzle.post("/:puzzleId/:characterId", guessPuzzleCharacterById);
+puzzle.get("/:puzzleId", puzzleReadById);
 
 module.exports = puzzle;
