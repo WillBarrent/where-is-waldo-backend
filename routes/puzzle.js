@@ -1,6 +1,6 @@
 const { Router } = require("express");
-const { puzzleReadAll, puzzleReadById } = require("../controllers/puzzle");
 const puzzle = Router();
+const { puzzleReadAll, puzzleReadById } = require("../controllers/puzzle");
 
 puzzle.get("/", puzzleReadAll);
 
