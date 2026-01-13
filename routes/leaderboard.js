@@ -8,3 +8,5 @@ const leaderboard = Router();
 leaderboard.post("/", playerCreate);
 
 leaderboard.put("/:playerId", playerUpdateById);
+
+module.exports = leaderboard;
