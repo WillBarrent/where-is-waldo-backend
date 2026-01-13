@@ -25,7 +25,7 @@ model Puzzle {
 model Player {
   id             Int      @id @default(autoincrement())
   username       String
-  completedAt    DateTime
+  completedAt    DateTime @default(now())
   completionTime Int
   puzzle         Puzzle?  @relation(fields: [puzzleId], references: [id])
   puzzleId       Int?
