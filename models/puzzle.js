@@ -3,6 +3,7 @@ const { prisma } = require("./db");
 const readAllPuzzles = async () => {
   const puzzles = await prisma.puzzle.findMany({
     include: {
+      leaderboard: true,
       characters: {
         include: {
           coordinates: true,
