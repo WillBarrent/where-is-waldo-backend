@@ -1,13 +1,10 @@
 const { Router } = require("express");
 const {
-  leaderboardReadByPuzzleId,
   playerCreate,
   playerUpdateById,
 } = require("../controllers/leaderboard");
 const leaderboard = Router();
 
-leaderboard.get("/:puzzleId", leaderboardReadByPuzzleId);
+leaderboard.post("/", playerCreate);
 
-leaderboard.post("/", leaderboardCreate);
-
-leaderboard.put("/:playerId", leaderboardUpdateByPlayerId);
+leaderboard.put("/:playerId", playerUpdateById);
