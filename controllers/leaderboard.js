@@ -6,23 +6,29 @@ const playerCreate = async (req, res) => {
   const randomNames = ["Waldo", "Odlaw", "Wizard"];
   const randomIndex = Math.round((Math.random() * 100) % 2);
 
-  await createPlayer(randomNames[randomIndex], completionTime, puzzleId);
+  const player = await createPlayer(
+    randomNames[randomIndex],
+    completionTime,
+    puzzleId,
+  );
 
   res.json({
     msg: "User has been created successfully",
+    data: {
+      playerId: player.id,
+    },
   });
 };
 
 const playerUpdateById = async (req, res) => {
-  const { playerId, username } = req.body;
-
-  if (username.length !== 0) {
+  const { username, playerId, puzzleId } = req.body;
+  if (username.length === 0) {
     return res.json({
       msg: "Username hasn't been changed",
     });
   }
 
-  await updatePlayerById(playerId, username);
+  await updatePlayerById(playerId, puzzleId, username);
 
   res.json({
     msg: "Username has been changed successfully",
